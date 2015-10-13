@@ -13,9 +13,13 @@ public:
 	Application();
 	~Application();
 
-	int Run();
+	int run();
 
 private:
+	bool initGLFW();
+	bool initGLEW();
+	bool createWindow();
 
+	bool is_initialized;
+	GLFWwindow* window;
 };
-

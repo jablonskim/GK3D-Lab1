@@ -3,5 +3,5 @@
 int main()
 {
 	auto app = std::make_shared<Application>();
-	return app->Run();
+	return app->run();
 }
