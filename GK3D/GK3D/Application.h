@@ -19,6 +19,7 @@ private:
 	bool initGLFW();
 	bool initGLEW();
 	bool createWindow();
+	void renderFrame();
 
 	bool is_initialized;
 	GLFWwindow* window;

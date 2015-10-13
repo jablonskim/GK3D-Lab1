@@ -29,7 +29,14 @@ int Application::run()
 		return 1;
 	}
 
-	// TODO
+	glViewport(0, 0, 800, 600);
+
+	while (!glfwWindowShouldClose(window))
+	{
+		glfwPollEvents();
+		renderFrame();
+		glfwSwapBuffers(window);
+	}
 
 	return 0;
 }
@@ -77,4 +84,12 @@ bool Application::createWindow()
 	glfwMakeContextCurrent(window);
 
 	return true;
+}
+
+void Application::renderFrame()
+{
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	// TODO
 }
