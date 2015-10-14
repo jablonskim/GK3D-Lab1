@@ -32,7 +32,7 @@ int Application::run()
 		return 1;
 	}
 
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, Settings::ScreenWidth, Settings::ScreenHeight);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -54,10 +54,10 @@ bool Application::initGLFW()
 		return false;
 	}
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, Settings::OpenGlMinVersionMajor);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, Settings::OpenGlMinVersionMinor);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	glfwWindowHint(GLFW_RESIZABLE, Settings::WindowResizable ? GL_TRUE : GL_FALSE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	return true;
@@ -82,7 +82,7 @@ bool Application::createWindow()
 {
 	std::cout << "Creating window" << std::endl;
 
-	window = glfwCreateWindow(800, 600, "Test", nullptr, nullptr);
+	window = glfwCreateWindow(Settings::ScreenWidth, Settings::ScreenHeight, "Test", nullptr, nullptr);
 
 	if (window == nullptr)
 	{
