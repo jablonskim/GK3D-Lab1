@@ -18,11 +18,14 @@ Application::Application() :
 
 Application::~Application()
 {
+	std::cout << "Cleaning..." << std::endl;
 	glfwTerminate();
 }
 
 int Application::run()
 {
+	std::cout << "Starting Application" << std::endl;
+
 	if (!is_initialized)
 	{
 		std::cerr << "Application is not initialized!" << std::endl;
@@ -43,6 +46,8 @@ int Application::run()
 
 bool Application::initGLFW()
 {
+	std::cout << "Initializing GLFW" << std::endl;
+
 	if (glfwInit() == GL_FALSE)
 	{
 		std::cerr << "Failed to initialize GLFW." << std::endl;
@@ -60,6 +65,8 @@ bool Application::initGLFW()
 
 bool Application::initGLEW()
 {
+	std::cout << "Initializing GLEW" << std::endl;
+
 	glewExperimental = GL_TRUE;
 
 	if (glewInit() != GLEW_OK)
@@ -73,6 +80,8 @@ bool Application::initGLEW()
 
 bool Application::createWindow()
 {
+	std::cout << "Creating window" << std::endl;
+
 	window = glfwCreateWindow(800, 600, "Test", nullptr, nullptr);
 
 	if (window == nullptr)
