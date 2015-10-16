@@ -3,6 +3,7 @@
 Shader::Shader() :
 	shader_id(0)
 {
+	std::cout << "Creating new shader..." << std::endl;
 }
 
 bool Shader::createShader(ShaderType type, std::string shader_path)
@@ -44,6 +45,8 @@ bool Shader::createShader(ShaderType type, std::string shader_path)
 
 Shader::~Shader()
 {
+	std::cout << "Destroying shader..." << std::endl;
+
 	if (shader_id != 0)
 	{
 		glDeleteShader(shader_id);

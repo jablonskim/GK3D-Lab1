@@ -4,6 +4,7 @@
 ShaderProgram::ShaderProgram() :
 	shader_program(0)
 {
+	std::cout << "Creating new shader program..." << std::endl;
 }
 
 bool ShaderProgram::createProgram(std::string vertex_shader_path, std::string fragment_shader_path)
@@ -39,6 +40,8 @@ bool ShaderProgram::createProgram(std::string vertex_shader_path, std::string fr
 
 ShaderProgram::~ShaderProgram()
 {
+	std::cout << "Destroying shader program..." << std::endl;
+
 	if (shader_program != 0)
 	{
 		glDeleteProgram(shader_program);
