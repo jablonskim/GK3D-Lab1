@@ -12,6 +12,8 @@ public:
 	static const bool WindowResizable = false;
 	static constexpr char* WindowTitle = "Test";
 
+	static constexpr int MessageBufferSize = 1024;
+
 private:
 	Settings() = delete;
 	Settings(const Settings &) = delete;

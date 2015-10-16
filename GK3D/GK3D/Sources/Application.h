@@ -3,10 +3,7 @@
 #include <memory>
 #include <iostream>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
+#include "Includes.h"
 #include "Settings.h"
 
 class Application
