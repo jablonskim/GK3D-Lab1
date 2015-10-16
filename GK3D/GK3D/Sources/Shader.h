@@ -9,6 +9,7 @@ class Shader
 public:
 	~Shader();
 	static std::shared_ptr<Shader> create(ShaderType type, std::string shader_path);
+	void attach(GLuint program);
 
 private:
 	Shader();

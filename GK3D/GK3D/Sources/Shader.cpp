@@ -61,3 +61,8 @@ std::shared_ptr<Shader> Shader::create(ShaderType type, std::string shader_path)
 
 	return shader;
 }
+
+void Shader::attach(GLuint program)
+{
+	glAttachShader(program, shader_id);
+}
