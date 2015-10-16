@@ -10,6 +10,7 @@ public:
 	static const int OpenGlMinVersionMinor = 3;
 
 	static const bool WindowResizable = false;
+	static constexpr char* WindowTitle = "Test";
 
 private:
 	Settings() = delete;

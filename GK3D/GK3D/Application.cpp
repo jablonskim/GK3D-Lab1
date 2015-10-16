@@ -82,7 +82,7 @@ bool Application::createWindow()
 {
 	std::cout << "Creating window" << std::endl;
 
-	window = glfwCreateWindow(Settings::ScreenWidth, Settings::ScreenHeight, "Test", nullptr, nullptr);
+	window = glfwCreateWindow(Settings::ScreenWidth, Settings::ScreenHeight, Settings::WindowTitle, nullptr, nullptr);
 
 	if (window == nullptr)
 	{
