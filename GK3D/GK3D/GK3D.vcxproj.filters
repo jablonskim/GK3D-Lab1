@@ -68,6 +68,12 @@
     <ClInclude Include="Sources\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\MoveDirection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\LookDirection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\VertexShader.glsl">
