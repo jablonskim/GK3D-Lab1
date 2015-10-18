@@ -130,13 +130,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Application.cpp" />
+    <ClCompile Include="Sources\Camera.cpp" />
+    <ClCompile Include="Sources\Input.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\Model.cpp" />
     <ClCompile Include="Sources\Shader.cpp" />
     <ClCompile Include="Sources\ShaderProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Application.h" />
+    <ClInclude Include="Sources\Camera.h" />
     <ClInclude Include="Sources\Includes.h" />
+    <ClInclude Include="Sources\Input.h" />
+    <ClInclude Include="Sources\Model.h" />
     <ClInclude Include="Sources\Settings.h" />
     <ClInclude Include="Sources\Shader.h" />
     <ClInclude Include="Sources\ShaderProgram.h" />
