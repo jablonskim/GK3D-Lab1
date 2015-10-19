@@ -6,6 +6,7 @@
 #include "Includes.h"
 #include "Settings.h"
 #include "Input.h"
+#include "Camera.h"
 
 class Application
 {
@@ -23,4 +24,5 @@ private:
 
 	bool is_initialized;
 	GLFWwindow* window;
+	std::shared_ptr<Camera> camera;
 };

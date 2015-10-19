@@ -4,6 +4,8 @@ Application::Application() :
 	is_initialized(false),
 	window(nullptr)
 {
+	camera = std::make_shared<Camera>();
+
 	if (!initGLFW())
 		return;
 
@@ -44,7 +46,7 @@ int Application::run()
 	{
 		glfwPollEvents();
 
-		Input::instance()->handleInput();
+		Input::instance()->handleInput(camera);
 		renderFrame();
 
 		glfwSwapBuffers(window);

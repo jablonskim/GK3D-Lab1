@@ -74,7 +74,25 @@ void Input::disableCursor(GLFWwindow * window, bool disabled)
 	glfwSetInputMode(window, GLFW_CURSOR, disabled ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
 }
 
-void Input::handleInput()
+void Input::handleInput(std::shared_ptr<Camera> & camera)
 {
-	// TODO
+	if (keys_state[Settings::MoveForwardKey])
+		camera->move(MoveDirection::Forward);
+
+	if (keys_state[Settings::MoveBackwardKey])
+		camera->move(MoveDirection::Backward);
+
+	if (keys_state[Settings::MoveLeftKey])
+		camera->move(MoveDirection::Left);
+
+	if (keys_state[Settings::MoveRightKey])
+		camera->move(MoveDirection::Right);
+
+	if (keys_state[Settings::MoveUpKey])
+		camera->move(MoveDirection::Up);
+
+	if (keys_state[Settings::MoveDownKey])
+		camera->move(MoveDirection::Down);
+
+	// TODO: mouse
 }

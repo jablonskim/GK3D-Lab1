@@ -2,6 +2,7 @@
 
 #include "Includes.h"
 #include "Settings.h"
+#include "Camera.h"
 
 namespace InputCallbacks
 {
@@ -14,10 +15,10 @@ class Input
 public:
 	~Input();
 	static Input* instance();
-	void registerKeyboard(GLFWwindow* window);
-	void registerMouse(GLFWwindow* window);
-	void disableCursor(GLFWwindow* window, bool disabled);
-	void handleInput();
+	void registerKeyboard(GLFWwindow * window);
+	void registerMouse(GLFWwindow * window);
+	void disableCursor(GLFWwindow * window, bool disabled);
+	void handleInput(std::shared_ptr<Camera> & camera);
 
 private:
 	Input();
