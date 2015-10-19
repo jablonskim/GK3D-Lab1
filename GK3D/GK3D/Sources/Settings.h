@@ -14,6 +14,9 @@ public:
 
 	static constexpr int MessageBufferSize = 1024;
 
+	static constexpr float FieldOfView = 45.0f;
+	static constexpr int NumInputKeys = 1024;
+
 private:
 	Settings() = delete;
 	Settings(const Settings &) = delete;

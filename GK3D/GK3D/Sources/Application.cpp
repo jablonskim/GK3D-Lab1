@@ -10,6 +10,11 @@ Application::Application() :
 	if (!createWindow())
 		return;
 
+	Input::instance()->registerKeyboard(window);
+	Input::instance()->registerMouse(window);
+
+	Input::instance()->disableCursor(window, true);
+
 	if (!initGLEW())
 		return;
 
@@ -38,7 +43,10 @@ int Application::run()
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
+
+		Input::instance()->handleInput();
 		renderFrame();
+
 		glfwSwapBuffers(window);
 	}
 
@@ -100,6 +108,7 @@ void Application::renderFrame()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 
 	// TODO
 }

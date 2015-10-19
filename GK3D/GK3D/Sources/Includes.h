@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <map>
 
 #define GLEW_STATIC
 #include <GL/glew.h>

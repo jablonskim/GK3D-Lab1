@@ -149,6 +149,7 @@
     <ClInclude Include="Sources\Shader.h" />
     <ClInclude Include="Sources\ShaderProgram.h" />
     <ClInclude Include="Sources\ShaderType.h" />
+    <ClInclude Include="Sources\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\FragmentShader.glsl" />

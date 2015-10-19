@@ -5,6 +5,7 @@
 
 #include "Includes.h"
 #include "Settings.h"
+#include "Input.h"
 
 class Application
 {
