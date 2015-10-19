@@ -133,6 +133,7 @@
     <ClCompile Include="Sources\Camera.cpp" />
     <ClCompile Include="Sources\Input.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\Mesh.cpp" />
     <ClCompile Include="Sources\Model.cpp" />
     <ClCompile Include="Sources\Shader.cpp" />
     <ClCompile Include="Sources\ShaderProgram.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Sources\Includes.h" />
     <ClInclude Include="Sources\Input.h" />
     <ClInclude Include="Sources\LookDirection.h" />
+    <ClInclude Include="Sources\Mesh.h" />
     <ClInclude Include="Sources\Model.h" />
     <ClInclude Include="Sources\MoveDirection.h" />
     <ClInclude Include="Sources\Settings.h" />

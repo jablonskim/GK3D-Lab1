@@ -94,5 +94,5 @@ void Input::handleInput(std::shared_ptr<Camera> & camera)
 	if (keys_state[Settings::MoveDownKey])
 		camera->move(MoveDirection::Down);
 
-	// TODO: mouse
+	// TODO: mouse 
 }

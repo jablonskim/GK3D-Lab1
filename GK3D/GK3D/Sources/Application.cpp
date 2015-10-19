@@ -106,6 +106,12 @@ bool Application::createWindow()
 	return true;
 }
 
+void Application::createModels()
+{
+	terrain = Model::createTerrain();
+	// TODO
+}
+
 void Application::renderFrame()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

@@ -24,6 +24,8 @@ public:
 	static const int MoveForwardKey = GLFW_KEY_W;
 	static const int MoveBackwardKey = GLFW_KEY_S;
 
+	static const int TerrainSize = 10;
+
 	static const bool InvertMouseX = false;
 	static const bool InvertMouseY = false;
 
