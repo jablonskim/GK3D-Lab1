@@ -12,11 +12,14 @@ public:
 
 	~Model();
 	void draw();
+	void setColor(glm::vec4 col);
 
 private:
 	Model(std::shared_ptr<ShaderProgram> prog, std::shared_ptr<Mesh> mesh);
+	void useColor();
 
 	std::shared_ptr<ShaderProgram> program;
 	std::shared_ptr<Mesh> model_mesh;
+	glm::vec4 color;
 };
 

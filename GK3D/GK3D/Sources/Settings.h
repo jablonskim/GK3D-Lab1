@@ -34,6 +34,8 @@ public:
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\VertexShader.glsl";
 	static constexpr char* FragmentShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\FragmentShader.glsl";
 
+	static constexpr char* ShaderModelColorLocationName = "model_color";
+
 private:
 	Settings() = delete;
 	Settings(const Settings &) = delete;

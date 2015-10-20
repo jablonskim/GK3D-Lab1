@@ -53,6 +53,11 @@ void ShaderProgram::use()
 	glUseProgram(shader_program);
 }
 
+GLint ShaderProgram::getUniformLocation(const GLchar * name)
+{
+	return glGetUniformLocation(shader_program, name);
+}
+
 std::shared_ptr<ShaderProgram> ShaderProgram::create(std::string vertex_shader_path, std::string fragment_shader_path)
 {
 	auto program = std::shared_ptr<ShaderProgram>(new ShaderProgram());
