@@ -13,7 +13,8 @@ namespace InputCallbacks
 	}
 }
 
-Input::Input()
+Input::Input() :
+	last_frame(0)
 {
 }
 

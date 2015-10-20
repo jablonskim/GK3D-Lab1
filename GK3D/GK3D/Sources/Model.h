@@ -13,13 +13,18 @@ public:
 	~Model();
 	void draw();
 	void setColor(glm::vec4 col);
+	void setMatrix(glm::mat4 matrix);
 
 private:
 	Model(std::shared_ptr<ShaderProgram> prog, std::shared_ptr<Mesh> mesh);
+
 	void useColor();
+	void useMatrix();
 
 	std::shared_ptr<ShaderProgram> program;
 	std::shared_ptr<Mesh> model_mesh;
+	
+	glm::mat4 model_matrix;
 	glm::vec4 color;
 };
 

@@ -33,4 +33,6 @@ private:
 
 	bool keys_state[Settings::NumInputKeys];
 	bool wireframe_mode;
+
+	GLfloat last_frame;
 };

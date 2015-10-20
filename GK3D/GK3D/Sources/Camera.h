@@ -16,6 +16,8 @@ public:
 	void use();
 
 private:
+	void update();
+
 	std::shared_ptr<ShaderProgram> program;
 
 	glm::mat4 projection;
@@ -23,5 +25,8 @@ private:
 	glm::vec3 position;
 	glm::vec3 front;
 	glm::vec3 up;
+
+	glm::vec3 right;
+	glm::vec3 world_up;
 };
 
