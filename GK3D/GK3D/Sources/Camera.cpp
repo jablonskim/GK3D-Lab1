@@ -4,7 +4,7 @@
 
 Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	program(prog),
-	position(glm::vec3(0.f, 0.1f, 0.5f)),
+	position(glm::vec3(0.f, 0.02f, 0.5f)),
 	front(glm::vec3(0.0f, 0.0f, -1.0f)),
 	world_up(glm::vec3(0.f, 1.f, 0.f)),
 	pitch(0.f),
@@ -44,11 +44,11 @@ void Camera::move(MoveDirection direction, GLfloat delta)
 		break;
 
 	case MoveDirection::Forward:
-		position += front * v;
+		position += glm::normalize(glm::cross(world_up, right)) * v;
 		break;
 
 	case MoveDirection::Backward:
-		position -= front * v;
+		position -= glm::normalize(glm::cross(world_up, right)) * v;
 		break;
 
 	default:

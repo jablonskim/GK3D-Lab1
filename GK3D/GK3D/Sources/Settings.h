@@ -15,7 +15,7 @@ public:
 	static constexpr int MessageBufferSize = 1024;
 
 	static constexpr float FieldOfView = 45.0f;
-	static constexpr float PerspectiveNear = .1f;
+	static constexpr float PerspectiveNear = .01f;
 	static constexpr float PerspectiveFar = 1000.f;
 
 	static constexpr int NumInputKeys = 1024;
