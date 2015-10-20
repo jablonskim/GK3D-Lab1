@@ -50,6 +50,7 @@ public:
 	static constexpr char* ShaderProjectionMatrixLocationName = "projection_matrix";
 	static constexpr char* ShaderViewMatrixLocationName = "view_matrix";
 	static constexpr char* ShaderModelMatrixLocationName = "model_matrix";
+	static constexpr char* ShaderNormalMatrixLocationName = "normal_matrix";
 
 	static constexpr char* ShaderModelColorLocationName = "model_color";
 	static constexpr char* ShaderAmbientStrengthLocationName = "ambient_strength";

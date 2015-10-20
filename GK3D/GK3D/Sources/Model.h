@@ -25,6 +25,7 @@ private:
 	std::shared_ptr<Mesh> model_mesh;
 	
 	glm::mat4 model_matrix;
+	glm::mat3 normal_matrix;
 	glm::vec4 color;
 };
 

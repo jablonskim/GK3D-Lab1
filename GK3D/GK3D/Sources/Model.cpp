@@ -5,7 +5,7 @@ Model::Model(std::shared_ptr<ShaderProgram> prog, std::shared_ptr<Mesh> mesh) :
 	model_mesh(mesh)
 {
 	color = glm::vec4(0.f, 0.f, 0.f, 0.f);
-	model_matrix = glm::mat4();
+	setMatrix(glm::mat4());
 }
 
 void Model::useColor()
@@ -17,6 +17,9 @@ void Model::useMatrix()
 {
 	GLint model_mat = program->getUniformLocation(Settings::ShaderModelMatrixLocationName);
 	glUniformMatrix4fv(model_mat, 1, GL_FALSE, glm::value_ptr(model_matrix));
+
+	GLint normal_mat = program->getUniformLocation(Settings::ShaderNormalMatrixLocationName);
+	glUniformMatrix3fv(normal_mat, 1, GL_FALSE, glm::value_ptr(normal_matrix));
 }
 
 std::shared_ptr<Model> Model::fromMesh(std::shared_ptr<Mesh> mesh, std::shared_ptr<ShaderProgram> prog)
@@ -59,4 +62,5 @@ void Model::setColor(glm::vec4 col)
 void Model::setMatrix(glm::mat4 matrix)
 {
 	model_matrix = matrix;
+	normal_matrix = glm::mat3(glm::transpose(glm::inverse(matrix)));
 }
