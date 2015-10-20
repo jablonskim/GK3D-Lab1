@@ -11,7 +11,7 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	yaw(-90.f)
 {
 	GLfloat ratio = static_cast<GLfloat>(Settings::ScreenWidth) / static_cast<GLfloat>(Settings::ScreenHeight);
-	projection = glm::perspective(Settings::FieldOfView, ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
+	projection = glm::perspective(glm::radians(Settings::FieldOfView), ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
 
 	update();
 }

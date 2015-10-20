@@ -29,7 +29,7 @@ public:
 
 	static const int WireframeModeKey = GLFW_KEY_H;
 
-	static constexpr float MovementSpeed = .5f;
+	static constexpr float MovementSpeed = .3f;
 	static constexpr float MouseSensitivityX = .1f;
 	static constexpr float MouseSensitivityY = .1f;
 
