@@ -13,6 +13,7 @@ public:
 	~Camera();
 
 	void move(MoveDirection direction, GLfloat delta);
+	void look(GLfloat x, GLfloat y);
 	void use();
 
 private:
@@ -28,5 +29,8 @@ private:
 
 	glm::vec3 right;
 	glm::vec3 world_up;
+
+	GLfloat pitch;
+	GLfloat yaw;
 };
 

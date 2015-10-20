@@ -14,7 +14,12 @@ namespace InputCallbacks
 }
 
 Input::Input() :
-	last_frame(0)
+	last_frame(0),
+	x_move(0.f),
+	y_move(0.f),
+	last_x(0),
+	last_y(0),
+	firstMouseValues(true)
 {
 }
 
@@ -54,13 +59,27 @@ void Input::onKey(GLFWwindow * window, int key, int scancode, int action, int mo
 
 void Input::onMouse(GLFWwindow * window, double xpos, double ypos)
 {
-	// TODO
+	if (firstMouseValues)
+	{
+		last_x = xpos;
+		last_y = ypos;
+
+		firstMouseValues = false;
+
+		return;
+	}
+
+	x_move += static_cast<GLfloat>(xpos - last_x);
+	y_move += static_cast<GLfloat>(ypos - last_y);
+
+	last_x = xpos;
+	last_y = ypos;
 }
 
 GLfloat Input::getDelta()
 {
 	GLdouble time = glfwGetTime();
-	GLfloat delta = time - last_frame;
+	GLfloat delta = static_cast<GLfloat>(time - last_frame);
 	last_frame = time;
 
 	return delta;
@@ -114,5 +133,6 @@ void Input::handleInput(std::shared_ptr<Camera> & camera)
 	if (keys_state[Settings::MoveDownKey])
 		camera->move(MoveDirection::Down, delta);
 
-	// TODO: mouse 
+	camera->look(x_move, y_move);
+	x_move = y_move = 0;
 }

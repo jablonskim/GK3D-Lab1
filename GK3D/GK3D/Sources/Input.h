@@ -36,4 +36,10 @@ private:
 	bool wireframe_mode;
 
 	GLdouble last_frame;
+
+	GLfloat x_move;
+	GLfloat y_move;
+
+	GLdouble last_x, last_y;
+	bool firstMouseValues;
 };

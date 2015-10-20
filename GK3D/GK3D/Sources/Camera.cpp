@@ -6,7 +6,9 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	program(prog),
 	position(glm::vec3(0.f, 0.1f, 0.5f)),
 	front(glm::vec3(0.0f, 0.0f, -1.0f)),
-	world_up(glm::vec3(0.f, 1.f, 0.f))
+	world_up(glm::vec3(0.f, 1.f, 0.f)),
+	pitch(0.f),
+	yaw(-90.f)
 {
 	GLfloat ratio = static_cast<GLfloat>(Settings::ScreenWidth) / static_cast<GLfloat>(Settings::ScreenHeight);
 	projection = glm::perspective(Settings::FieldOfView, ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
@@ -54,6 +56,29 @@ void Camera::move(MoveDirection direction, GLfloat delta)
 	}
 }
 
+void Camera::look(GLfloat x, GLfloat y)
+{
+	yaw += x * Settings::MouseSensitivityX * (Settings::InvertMouseX ? -1 : 1);
+	pitch -= y * Settings::MouseSensitivityY * (Settings::InvertMouseY ? -1 : 1);
+
+	const auto FullAngle = 360;
+	const auto UpDownLimit = 89.9f;
+
+	while (yaw < -FullAngle)
+		yaw += FullAngle;
+
+	while (yaw > FullAngle)
+		yaw -= FullAngle;
+
+	if (pitch > UpDownLimit)
+		pitch = UpDownLimit;
+
+	if (pitch < -UpDownLimit)
+		pitch = -UpDownLimit;
+
+	update();
+}
+
 void Camera::use()
 {
 	GLint projection_mat = program->getUniformLocation(Settings::ShaderProjectionMatrixLocationName);
@@ -67,7 +92,11 @@ void Camera::use()
 
 void Camera::update()
 {
+	front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
+	front.y = sin(glm::radians(pitch));
+	front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
 	front = glm::normalize(front);
+
 	right = glm::normalize(glm::cross(front, world_up));
 	up = glm::normalize(glm::cross(right, front));
 }
