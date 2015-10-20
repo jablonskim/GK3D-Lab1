@@ -54,6 +54,7 @@ public:
 	static constexpr char* ShaderNormalMatrixLocationName = "normal_matrix";
 
 	static constexpr char* ShaderModelColorLocationName = "model_color";
+	static constexpr char* ShaderCameraPosLocationName = "camera_position";
 	static constexpr char* ShaderAmbientStrengthLocationName = "ambient_strength";
 	static constexpr char* ShaderSpecularStrengthLocationName = "specular_strength";
 

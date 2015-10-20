@@ -1,7 +1,5 @@
 #include "Camera.h"
 
-
-
 Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	program(prog),
 	position(glm::vec3(0.f, 0.02f, 0.5f)),
@@ -17,7 +15,6 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 
 	update();
 }
-
 
 Camera::~Camera()
 {
@@ -94,6 +91,9 @@ void Camera::use()
 
 	GLint view_mat = program->getUniformLocation(Settings::ShaderViewMatrixLocationName);
 	glUniformMatrix4fv(view_mat, 1, GL_FALSE, glm::value_ptr(view));
+
+	GLint cam_pos = program->getUniformLocation(Settings::ShaderCameraPosLocationName);
+	glUniform3fv(cam_pos, 1, glm::value_ptr(position));
 }
 
 void Camera::update()
