@@ -54,6 +54,7 @@ void ShaderProgram::use()
 
 	glUniform1f(getUniformLocation(Settings::ShaderAmbientStrengthLocationName), Settings::AmbientStrength);
 	glUniform1f(getUniformLocation(Settings::ShaderSpecularStrengthLocationName), Settings::SpecularStrength);
+	glUniform1i(getUniformLocation(Settings::ShaderSpecularShininessLocationName), Settings::SpecularShininess);
 }
 
 GLint ShaderProgram::getUniformLocation(const GLchar * name)

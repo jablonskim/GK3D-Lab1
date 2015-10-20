@@ -43,6 +43,7 @@ public:
 
 	static constexpr float AmbientStrength = 0.2f;
 	static constexpr float SpecularStrength = 0.5f;
+	static const int SpecularShininess = 32;
 
 
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\VertexShader.glsl";
@@ -57,6 +58,7 @@ public:
 	static constexpr char* ShaderCameraPosLocationName = "camera_position";
 	static constexpr char* ShaderAmbientStrengthLocationName = "ambient_strength";
 	static constexpr char* ShaderSpecularStrengthLocationName = "specular_strength";
+	static constexpr char* ShaderSpecularShininessLocationName = "specular_shininess";
 
 private:
 	Settings() = delete;
