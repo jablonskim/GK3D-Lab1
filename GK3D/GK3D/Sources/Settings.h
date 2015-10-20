@@ -32,6 +32,7 @@ public:
 	static constexpr float MovementSpeed = .3f;
 	static constexpr float MouseSensitivityX = .1f;
 	static constexpr float MouseSensitivityY = .1f;
+	static const bool MoveToLookDirection = true;
 
 	static const int TerrainSize = 50;
 

@@ -28,11 +28,11 @@ void Camera::move(MoveDirection direction, GLfloat delta)
 	switch (direction)
 	{
 	case MoveDirection::Up:
-		position += world_up * v;
+		position += Settings::MoveToLookDirection ? up * v : world_up * v;
 		break;
 
 	case MoveDirection::Down:
-		position -= world_up * v;
+		position -= Settings::MoveToLookDirection ? up * v : world_up * v;
 		break;
 
 	case MoveDirection::Left:
@@ -44,11 +44,15 @@ void Camera::move(MoveDirection direction, GLfloat delta)
 		break;
 
 	case MoveDirection::Forward:
-		position += glm::normalize(glm::cross(world_up, right)) * v;
+		position += (Settings::MoveToLookDirection ?
+			front * v :
+			glm::normalize(glm::cross(world_up, right)) * v);
 		break;
 
 	case MoveDirection::Backward:
-		position -= glm::normalize(glm::cross(world_up, right)) * v;
+		position -= (Settings::MoveToLookDirection ?
+			front * v : 
+			glm::normalize(glm::cross(world_up, right)) * v);
 		break;
 
 	default:
