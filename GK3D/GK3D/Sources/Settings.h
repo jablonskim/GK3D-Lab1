@@ -15,6 +15,9 @@ public:
 	static constexpr int MessageBufferSize = 1024;
 
 	static constexpr float FieldOfView = 45.0f;
+	static constexpr float PerspectiveNear = .1f;
+	static constexpr float PerspectiveFar = 1000.f;
+
 	static constexpr int NumInputKeys = 1024;
 
 	static const int MoveUpKey = GLFW_KEY_UP;
@@ -35,6 +38,10 @@ public:
 	static constexpr char* FragmentShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\FragmentShader.glsl";
 
 	static constexpr char* ShaderModelColorLocationName = "model_color";
+
+	static constexpr char* ShaderProjectionMatrixLocationName = "projection_matrix";
+	static constexpr char* ShaderViewMatrixLocationName = "view_matrix";
+	static constexpr char* ShaderModelMatrixLocationName = "model_matrix";
 
 private:
 	Settings() = delete;

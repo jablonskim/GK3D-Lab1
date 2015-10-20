@@ -4,8 +4,6 @@ Application::Application() :
 	is_initialized(false),
 	window(nullptr)
 {
-	camera = std::make_shared<Camera>();
-
 	if (!initGLFW())
 		return;
 
@@ -45,6 +43,8 @@ int Application::run()
 	program = ShaderProgram::create(Settings::VertexShaderPath, Settings::FragmentShaderPath);
 	if (program == nullptr)
 		return 1;
+
+	camera = std::make_shared<Camera>(program);
 
 	createModels();
 
@@ -122,6 +122,9 @@ void Application::renderFrame()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	program->use();
+	camera->use();
 
 	terrain->draw();
 

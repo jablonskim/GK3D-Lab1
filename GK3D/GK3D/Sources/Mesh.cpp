@@ -55,7 +55,7 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 			float y = (j * ter_s / num_vertices) + ter_from;
 
 			Vertex v;
-			v.position = glm::vec3(x, y, 0.0f);
+			v.position = glm::vec3(x, y, 0.f);
 
 			m->vertices.push_back(v);
 		}
