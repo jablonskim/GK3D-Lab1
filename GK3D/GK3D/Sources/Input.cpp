@@ -57,6 +57,15 @@ void Input::onMouse(GLFWwindow * window, double xpos, double ypos)
 	// TODO
 }
 
+GLfloat Input::getDelta()
+{
+	GLdouble time = glfwGetTime();
+	GLfloat delta = time - last_frame;
+	last_frame = time;
+
+	return delta;
+}
+
 Input::~Input()
 {
 }
@@ -85,23 +94,25 @@ void Input::disableCursor(GLFWwindow * window, bool disabled)
 
 void Input::handleInput(std::shared_ptr<Camera> & camera)
 {
+	GLfloat delta = getDelta();
+
 	if (keys_state[Settings::MoveForwardKey])
-		camera->move(MoveDirection::Forward);
+		camera->move(MoveDirection::Forward, delta);
 
 	if (keys_state[Settings::MoveBackwardKey])
-		camera->move(MoveDirection::Backward);
+		camera->move(MoveDirection::Backward, delta);
 
 	if (keys_state[Settings::MoveLeftKey])
-		camera->move(MoveDirection::Left);
+		camera->move(MoveDirection::Left, delta);
 
 	if (keys_state[Settings::MoveRightKey])
-		camera->move(MoveDirection::Right);
+		camera->move(MoveDirection::Right, delta);
 
 	if (keys_state[Settings::MoveUpKey])
-		camera->move(MoveDirection::Up);
+		camera->move(MoveDirection::Up, delta);
 
 	if (keys_state[Settings::MoveDownKey])
-		camera->move(MoveDirection::Down);
+		camera->move(MoveDirection::Down, delta);
 
 	// TODO: mouse 
 }

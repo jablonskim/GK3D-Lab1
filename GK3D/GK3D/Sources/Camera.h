@@ -12,7 +12,7 @@ public:
 	Camera(std::shared_ptr<ShaderProgram> prog);
 	~Camera();
 
-	void move(MoveDirection direction);
+	void move(MoveDirection direction, GLfloat delta);
 	void use();
 
 private:

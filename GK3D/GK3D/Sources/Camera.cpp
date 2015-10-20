@@ -19,9 +19,9 @@ Camera::~Camera()
 {
 }
 
-void Camera::move(MoveDirection direction)
+void Camera::move(MoveDirection direction, GLfloat delta)
 {
-	GLfloat v = 0.001f; 
+	GLfloat v = delta * Settings::MovementSpeed;
 
 	switch (direction)
 	{

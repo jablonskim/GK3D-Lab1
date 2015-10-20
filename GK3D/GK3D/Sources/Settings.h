@@ -29,6 +29,8 @@ public:
 
 	static const int WireframeModeKey = GLFW_KEY_H;
 
+	static constexpr float MovementSpeed = .5f;
+
 	static const int TerrainSize = 50;
 
 	static const bool InvertMouseX = false;

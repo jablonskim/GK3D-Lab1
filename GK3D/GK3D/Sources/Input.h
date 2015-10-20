@@ -27,6 +27,7 @@ private:
 
 	void onKey(GLFWwindow* window, int key, int scancode, int action, int mode);
 	void onMouse(GLFWwindow* window, double xpos, double ypos);
+	GLfloat getDelta();
 
 	friend void InputCallbacks::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 	friend void InputCallbacks::mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -34,5 +35,5 @@ private:
 	bool keys_state[Settings::NumInputKeys];
 	bool wireframe_mode;
 
-	GLfloat last_frame;
+	GLdouble last_frame;
 };
