@@ -7,6 +7,8 @@ out vec4 color;
 
 uniform vec4 model_color;
 uniform float ambient_strength;
+uniform float specular_strength;
+uniform vec3 camera_position;
 
 void main()
 {

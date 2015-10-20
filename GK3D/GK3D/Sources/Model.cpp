@@ -24,10 +24,7 @@ void Model::useMatrix()
 
 std::shared_ptr<Model> Model::fromMesh(std::shared_ptr<Mesh> mesh, std::shared_ptr<ShaderProgram> prog)
 {
-	auto m = std::shared_ptr<Model>(new Model(prog, mesh));
-	
-	// TODO: po³o¿enie modelu?
-	return m;
+	return std::shared_ptr<Model>(new Model(prog, mesh));
 }
 
 std::shared_ptr<Model> Model::createTerrain(std::shared_ptr<ShaderProgram> prog)
