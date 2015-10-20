@@ -43,7 +43,7 @@ Model::~Model()
 
 void Model::draw()
 {
-	program->use();
+	//program->use();
 
 	useColor();
 	useMatrix();

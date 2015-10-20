@@ -7,8 +7,10 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	position(glm::vec3(0.f, 0.02f, 0.5f)),
 	front(glm::vec3(0.0f, 0.0f, -1.0f)),
 	world_up(glm::vec3(0.f, 1.f, 0.f)),
+	up(glm::vec3(0.f, 1.f, 0.f)),
 	pitch(0.f),
-	yaw(-90.f)
+	yaw(-90.f),
+	right(glm::normalize(glm::cross(front, world_up)))
 {
 	GLfloat ratio = static_cast<GLfloat>(Settings::ScreenWidth) / static_cast<GLfloat>(Settings::ScreenHeight);
 	projection = glm::perspective(glm::radians(Settings::FieldOfView), ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
@@ -96,9 +98,23 @@ void Camera::use()
 
 void Camera::update()
 {
+	/*static GLfloat prev_pitch = pitch, prev_yaw = yaw;
+	GLfloat a_pitch = pitch - prev_pitch;
+	GLfloat a_yav = prev_yaw - yaw;
+	prev_pitch = pitch;
+	prev_yaw = yaw;
+
+	front = glm::normalize(glm::rotate(front, glm::radians(a_pitch), right));
+
+	front = glm::normalize(glm::rotate(front, glm::radians(a_yav), up));
+
+	right = glm::normalize(glm::cross(front, world_up));
+	up = glm::normalize(glm::cross(right, front));*/
+
 	front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
 	front.y = sin(glm::radians(pitch));
 	front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+
 	front = glm::normalize(front);
 
 	right = glm::normalize(glm::cross(front, world_up));

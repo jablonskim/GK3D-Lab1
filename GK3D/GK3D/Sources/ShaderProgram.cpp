@@ -51,6 +51,8 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::use()
 {
 	glUseProgram(shader_program);
+
+	glUniform1f(getUniformLocation(Settings::ShaderAmbientStrengthLocationName), Settings::AmbientStrength);
 }
 
 GLint ShaderProgram::getUniformLocation(const GLchar * name)
