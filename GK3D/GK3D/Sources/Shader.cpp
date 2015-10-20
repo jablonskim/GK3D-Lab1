@@ -23,7 +23,8 @@ bool Shader::createShader(ShaderType type, std::string shader_path)
 	fstr << shader_file.rdbuf();
 	shader_file.close();
 
-	const GLchar* shader_src = fstr.str().c_str();
+	auto shader_str = fstr.str();
+	const GLchar* shader_src = shader_str.c_str();
 
 	glShaderSource(shader_id, 1, &shader_src, nullptr);
 	glCompileShader(shader_id);

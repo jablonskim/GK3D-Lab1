@@ -8,6 +8,7 @@
 #include "Input.h"
 #include "Camera.h"
 #include "Model.h"
+#include "ShaderProgram.h"
 
 class Application
 {
@@ -26,6 +27,7 @@ private:
 
 	bool is_initialized;
 	GLFWwindow* window;
+	std::shared_ptr<ShaderProgram> program;
 	std::shared_ptr<Camera> camera;
 
 	std::shared_ptr<Model> terrain;

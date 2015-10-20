@@ -3,8 +3,8 @@
 class Settings
 {
 public:
-	static const int ScreenWidth = 800;
-	static const int ScreenHeight = 600;
+	static const int ScreenWidth = 1280;
+	static const int ScreenHeight = 720;
 
 	static const int OpenGlMinVersionMajor = 3;
 	static const int OpenGlMinVersionMinor = 3;
@@ -24,10 +24,15 @@ public:
 	static const int MoveForwardKey = GLFW_KEY_W;
 	static const int MoveBackwardKey = GLFW_KEY_S;
 
-	static const int TerrainSize = 10;
+	static const int WireframeModeKey = GLFW_KEY_H;
+
+	static const int TerrainSize = 50;
 
 	static const bool InvertMouseX = false;
 	static const bool InvertMouseY = false;
+
+	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\VertexShader.glsl";
+	static constexpr char* FragmentShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\FragmentShader.glsl";
 
 private:
 	Settings() = delete;

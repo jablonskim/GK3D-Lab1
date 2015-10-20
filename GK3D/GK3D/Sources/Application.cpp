@@ -42,6 +42,12 @@ int Application::run()
 	glViewport(0, 0, Settings::ScreenWidth, Settings::ScreenHeight);
 	glEnable(GL_DEPTH_TEST);
 
+	program = ShaderProgram::create(Settings::VertexShaderPath, Settings::FragmentShaderPath);
+	if (program == nullptr)
+		return 1;
+
+	createModels();
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
@@ -108,7 +114,7 @@ bool Application::createWindow()
 
 void Application::createModels()
 {
-	terrain = Model::createTerrain();
+	terrain = Model::createTerrain(program);
 	// TODO
 }
 
@@ -117,6 +123,7 @@ void Application::renderFrame()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	terrain->draw();
 
 	// TODO
 }

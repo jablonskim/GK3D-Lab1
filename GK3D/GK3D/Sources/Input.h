@@ -32,4 +32,5 @@ private:
 	friend void InputCallbacks::mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
 	bool keys_state[Settings::NumInputKeys];
+	bool wireframe_mode;
 };

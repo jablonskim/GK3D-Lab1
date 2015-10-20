@@ -41,15 +41,15 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 {
 	auto m = std::shared_ptr<Mesh>(new Mesh());
 
-	int num_vertices = Settings::TerrainSize + 1;
+	int num_vertices = Settings::TerrainSize;
 
-	float ter_from = -1.0f;
-	float ter_to = 1.0f;
+	float ter_from = -1.f;
+	float ter_to = 1.f;
 	float ter_s = ter_to - ter_from;
 
-	for (int i = 0; i < num_vertices; ++i)
+	for (int i = 0; i <= num_vertices; ++i)
 	{
-		for (int j = 0; j < num_vertices; ++j)
+		for (int j = 0; j <= num_vertices; ++j)
 		{
 			float x = (i * ter_s / num_vertices) + ter_from;
 			float y = (j * ter_s / num_vertices) + ter_from;
@@ -92,5 +92,7 @@ std::shared_ptr<Mesh> Mesh::fromFile()
 
 void Mesh::draw()
 {
-	// TODO
+	glBindVertexArray(vao);
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }

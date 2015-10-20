@@ -25,6 +25,14 @@ void Input::onKey(GLFWwindow * window, int key, int scancode, int action, int mo
 		return;
 	}
 
+	if (key == Settings::WireframeModeKey && action == GLFW_PRESS)
+	{
+		wireframe_mode = !wireframe_mode;
+		glPolygonMode(GL_FRONT_AND_BACK, wireframe_mode ? GL_LINE : GL_FILL);
+
+		return;
+	}
+
 	if (key >= 0 && key < Settings::NumInputKeys)
 	{
 		switch (action)
