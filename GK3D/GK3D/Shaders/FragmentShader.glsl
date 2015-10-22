@@ -33,6 +33,7 @@ in vec3 fragment_position;
 out vec4 color;
 
 uniform vec4 model_color;
+uniform vec3 ambient_color;
 uniform float ambient_strength;
 uniform float specular_strength;
 uniform int specular_shininess;
@@ -81,14 +82,11 @@ vec3 calculate_spotlight(SpotLight light, vec3 model_normal, vec3 view_direction
 
 void main()
 {
-	// TODO: from sources
-	vec3 ambient_light_color = vec3(1.0f, 1.0f, 1.0f);
-
 	vec3 normalized_normal = normalize(normal);
 	vec3 view_direction = normalize(camera_position - fragment_position);
 
 	// Ambient
-	vec3 light_result = ambient_light_color * ambient_strength;
+	vec3 light_result = ambient_color * ambient_strength;
 
 	// Spotlights
 	for(int i = 0; i < SPOT_LIGHTS; ++i)

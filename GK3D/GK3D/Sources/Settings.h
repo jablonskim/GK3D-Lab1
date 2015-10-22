@@ -52,6 +52,10 @@ public:
 	static const int PointLightsCount = 2;
 	static const int SpotLightsCount = 1;
 
+	static constexpr float AmbientR = 1.0f;
+	static constexpr float AmbientG = 1.0f;
+	static constexpr float AmbientB = 1.0f;
+
 	static constexpr float SpotLightAngle = 10.f;
 	static constexpr float SpotLightSoft = 3.f;
 
@@ -77,6 +81,7 @@ public:
 	static constexpr char* ShaderNormalMatrixLocationName = "normal_matrix";
 
 	static constexpr char* ShaderModelColorLocationName = "model_color";
+	static constexpr char* ShaderAmbientColorLocationName = "ambient_color";
 	static constexpr char* ShaderCameraPosLocationName = "camera_position";
 
 	static constexpr char* ShaderAmbientStrengthLocationName = "ambient_strength";
