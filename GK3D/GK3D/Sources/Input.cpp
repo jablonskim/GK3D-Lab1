@@ -39,6 +39,12 @@ void Input::onKey(GLFWwindow * window, int key, int scancode, int action, int mo
 		return;
 	}
 
+	if (key == Settings::FlashlightSwitch && action == GLFW_PRESS)
+	{
+		switch_cam = true;
+		return;
+	}
+
 	if (key >= 0 && key < Settings::NumInputKeys)
 	{
 		switch (action)
@@ -135,4 +141,10 @@ void Input::handleInput(std::shared_ptr<Camera> & camera)
 
 	camera->look(x_move, y_move);
 	x_move = y_move = 0;
+
+	if (switch_cam)
+	{
+		camera->switchLight();
+		switch_cam = false;
+	}
 }

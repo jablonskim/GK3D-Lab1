@@ -4,6 +4,7 @@
 #include "LookDirection.h"
 #include "MoveDirection.h"
 #include "ShaderProgram.h"
+#include "SpotLight.h"
 #include "Settings.h"
 
 class Camera
@@ -14,12 +15,14 @@ public:
 
 	void move(MoveDirection direction, GLfloat delta);
 	void look(GLfloat x, GLfloat y);
+	void switchLight();
 	void use();
 
 private:
 	void update();
 
 	std::shared_ptr<ShaderProgram> program;
+	std::shared_ptr<SpotLight> light;
 
 	glm::mat4 projection;
 

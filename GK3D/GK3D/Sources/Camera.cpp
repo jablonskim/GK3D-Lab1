@@ -13,6 +13,9 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	GLfloat ratio = static_cast<GLfloat>(Settings::ScreenWidth) / static_cast<GLfloat>(Settings::ScreenHeight);
 	projection = glm::perspective(glm::radians(Settings::FieldOfView), ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
 
+	light = std::make_shared<SpotLight>(program, glm::vec3(Settings::SpotLightR, Settings::SpotLightG, Settings::SpotLightB));
+	light->setAngles(Settings::SpotLightAngle, Settings::SpotLightSoft);
+
 	update();
 }
 
@@ -82,6 +85,11 @@ void Camera::look(GLfloat x, GLfloat y)
 	update();
 }
 
+void Camera::switchLight()
+{
+	light->changeOnOff();
+}
+
 void Camera::use()
 {
 	GLint projection_mat = program->getUniformLocation(Settings::ShaderProjectionMatrixLocationName);
@@ -94,6 +102,10 @@ void Camera::use()
 
 	GLint cam_pos = program->getUniformLocation(Settings::ShaderCameraPosLocationName);
 	glUniform3fv(cam_pos, 1, glm::value_ptr(position));
+
+	light->setPosition(position);
+	light->setDirection(front);
+	light->use();
 }
 
 void Camera::update()

@@ -56,6 +56,8 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 
 			Vertex v;
 			v.position = glm::vec3(x, y, 0.f);
+			// TODO: change
+			v.normal = glm::vec3(0.f, 0.f, 1.f);
 
 			m->vertices.push_back(v);
 		}

@@ -42,4 +42,5 @@ private:
 
 	GLdouble last_x, last_y;
 	bool firstMouseValues;
+	bool switch_cam;
 };

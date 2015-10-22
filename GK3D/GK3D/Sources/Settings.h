@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Settings.h"
+
 class Settings
 {
 public:
@@ -28,6 +30,7 @@ public:
 	static const int MoveForwardKey = GLFW_KEY_W;
 	static const int MoveBackwardKey = GLFW_KEY_S;
 	static const int WireframeModeKey = GLFW_KEY_H;
+	static const int FlashlightSwitch = GLFW_KEY_L;
 
 	static constexpr float MovementSpeed = .3f;
 	static constexpr float MouseSensitivityX = .1f;
@@ -45,6 +48,16 @@ public:
 	static constexpr float SpecularStrength = 0.5f;
 	static const int SpecularShininess = 32;
 
+	static const int PointLightsCount = 2;
+	static const int SpotLightsCount = 1;
+
+	static constexpr float SpotLightAngle = 10.f;
+	static constexpr float SpotLightSoft = 3.f;
+
+	static constexpr float SpotLightR = 1.0f;
+	static constexpr float SpotLightG = 1.0f;
+	static constexpr float SpotLightB = 1.0f;
+
 
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\VertexShader.glsl";
 	static constexpr char* FragmentShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\FragmentShader.glsl";
@@ -56,9 +69,23 @@ public:
 
 	static constexpr char* ShaderModelColorLocationName = "model_color";
 	static constexpr char* ShaderCameraPosLocationName = "camera_position";
+
 	static constexpr char* ShaderAmbientStrengthLocationName = "ambient_strength";
 	static constexpr char* ShaderSpecularStrengthLocationName = "specular_strength";
 	static constexpr char* ShaderSpecularShininessLocationName = "specular_shininess";
+	
+	static constexpr char* ShaderLightPositionLocationName = "position";
+	static constexpr char* ShaderLightColorLocationName = "color";
+
+	static constexpr char* ShaderSpotLightsArrayLocationName = "spot_lights";
+	static constexpr char* ShaderSpotLightDirectionLocationName = "direction";
+	static constexpr char* ShaderSpotLightInnerAngleLocationName = "inner_cut_angle";
+	static constexpr char* ShaderSpotLightOuterAngleLocationName = "outer_cut_angle";
+
+	static constexpr char* ShaderPointLightsArrayLocationName = "point_lights";
+	static constexpr char* ShaderPointLightConstLocationName = "constant_factor";
+	static constexpr char* ShaderPointLightLinearLocationName = "linear_factor";
+	static constexpr char* ShaderPointLightQuadraticLocationName = "quadratic_factor";
 
 private:
 	Settings() = delete;
