@@ -55,9 +55,9 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 			float y = (j * ter_s / num_vertices) + ter_from;
 
 			Vertex v;
-			v.position = glm::vec3(x, y, 0.f);
-			// TODO: change
-			v.normal = glm::vec3(0.f, 0.f, 1.f);
+			float r = static_cast<float>(rand());
+			v.position = glm::vec3(x, y, (r / RAND_MAX) * 0.02f - 0.02f);
+			v.normal = glm::vec3(0.f, 0.f, 0.f);
 
 			m->vertices.push_back(v);
 		}
@@ -79,7 +79,19 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 		}
 	}
 
-	// TODO: normals
+	for (auto i = std::begin(m->indices); i != std::end(m->indices); std::advance(i, 3))
+	{
+		glm::vec3 v[] = { m->vertices[i[0]].position, m->vertices[i[1]].position, m->vertices[i[2]].position };
+		glm::vec3 norm = glm::cross(v[1] - v[0], v[2] - v[0]);
+
+		for (int j = 0; j < 3; ++j)
+		{
+			m->vertices[*(i + j)].normal += norm;
+		}
+	}
+
+	for (auto i = std::begin(m->vertices); i != std::end(m->vertices); std::advance(i, 1))
+		i->normal = glm::normalize(i->normal);
 
 	m->setupArrays();
 

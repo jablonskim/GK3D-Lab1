@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
+Camera::Camera(std::shared_ptr<ShaderProgram> prog, int screen_width, int screen_height) :
 	program(prog),
 	position(glm::vec3(0.f, 0.02f, 0.5f)),
 	front(glm::vec3(0.0f, 0.0f, -1.0f)),
@@ -10,7 +10,7 @@ Camera::Camera(std::shared_ptr<ShaderProgram> prog) :
 	yaw(-90.f),
 	right(glm::normalize(glm::cross(front, world_up)))
 {
-	GLfloat ratio = static_cast<GLfloat>(Settings::ScreenWidth) / static_cast<GLfloat>(Settings::ScreenHeight);
+	GLfloat ratio = static_cast<GLfloat>(screen_width) / static_cast<GLfloat>(screen_height);
 	projection = glm::perspective(glm::radians(Settings::FieldOfView), ratio, Settings::PerspectiveNear, Settings::PerspectiveFar);
 
 	light = std::make_shared<SpotLight>(program, glm::vec3(Settings::SpotLightR, Settings::SpotLightG, Settings::SpotLightB));

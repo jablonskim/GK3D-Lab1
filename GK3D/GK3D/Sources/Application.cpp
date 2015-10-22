@@ -2,7 +2,9 @@
 
 Application::Application() :
 	is_initialized(false),
-	window(nullptr)
+	window(nullptr),
+	current_width(0),
+	current_height(0)
 {
 	if (!initGLFW())
 		return;
@@ -37,14 +39,14 @@ int Application::run()
 		return 1;
 	}
 
-	glViewport(0, 0, Settings::ScreenWidth, Settings::ScreenHeight);
+	glViewport(0, 0, current_width, current_height);
 	glEnable(GL_DEPTH_TEST);
 
 	program = ShaderProgram::create(Settings::VertexShaderPath, Settings::FragmentShaderPath);
 	if (program == nullptr)
 		return 1;
 
-	camera = std::make_shared<Camera>(program);
+	camera = std::make_shared<Camera>(program, current_width, current_height);
 
 	createModels();
 
@@ -99,7 +101,18 @@ bool Application::createWindow()
 {
 	std::cout << "Creating window" << std::endl;
 
-	window = glfwCreateWindow(Settings::ScreenWidth, Settings::ScreenHeight, Settings::WindowTitle, nullptr, nullptr);
+	if (Settings::Fullscreen)
+	{
+		GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+		const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+		window = glfwCreateWindow(mode->width, mode->height, Settings::WindowTitle, monitor, nullptr);
+	}
+	else
+	{
+		window = glfwCreateWindow(Settings::ScreenWidth, Settings::ScreenHeight, Settings::WindowTitle, nullptr, nullptr);
+	}
+
+	glfwGetWindowSize(window, &current_width, &current_height);
 
 	if (window == nullptr)
 	{

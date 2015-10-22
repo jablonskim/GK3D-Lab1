@@ -26,6 +26,9 @@ private:
 	void renderFrame();
 
 	bool is_initialized;
+	int current_width;
+	int current_height;
+
 	GLFWwindow* window;
 	std::shared_ptr<ShaderProgram> program;
 	std::shared_ptr<Camera> camera;

@@ -10,7 +10,7 @@
 class Camera
 {
 public:
-	Camera(std::shared_ptr<ShaderProgram> prog);
+	Camera(std::shared_ptr<ShaderProgram> prog, int screen_width, int screen_height);
 	~Camera();
 
 	void move(MoveDirection direction, GLfloat delta);

@@ -45,8 +45,6 @@ Model::~Model()
 
 void Model::draw()
 {
-	//program->use();
-
 	useColor();
 	useMatrix();
 

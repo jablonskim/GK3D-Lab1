@@ -8,6 +8,7 @@ public:
 	static const int OpenGlMinVersionMajor = 3;
 	static const int OpenGlMinVersionMinor = 3;
 
+	static const bool Fullscreen = true;
 	static const bool WindowResizable = false;
 	static constexpr char* WindowTitle = "Test";
 
@@ -46,7 +47,7 @@ public:
 	static constexpr float TerrainScaleFactor = 10.f;
 
 	static constexpr float AmbientStrength = 0.2f;
-	static constexpr float SpecularStrength = 0.8f;
+	static constexpr float SpecularStrength = 0.9f;
 	static const int SpecularShininess = 128;
 
 	static const int PointLightsCount = 2;
@@ -56,8 +57,8 @@ public:
 	static constexpr float AmbientG = 1.0f;
 	static constexpr float AmbientB = 1.0f;
 
-	static constexpr float SpotLightAngle = 10.f;
-	static constexpr float SpotLightSoft = 3.f;
+	static constexpr float SpotLightAngle = 12.f;
+	static constexpr float SpotLightSoft = 4.f;
 
 	static constexpr float SpotLightR = 1.0f;
 	static constexpr float SpotLightG = 1.0f;
