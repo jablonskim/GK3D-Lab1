@@ -5,6 +5,7 @@ SpotLight::SpotLight(std::shared_ptr<ShaderProgram> prog, glm::vec3 col, glm::ve
 {
 	setDirection(dir);
 	setAngles(angle, soft_angle);
+	setFactors(Settings::SpotLightConstantFactor, Settings::SpotLightLinearFactor, Settings::SpotLightQuadraticFactor);
 }
 
 SpotLight::~SpotLight()

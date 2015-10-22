@@ -22,6 +22,13 @@ void Light::setColor(glm::vec3 col)
 	color = col;
 }
 
+void Light::setFactors(float constant, float linear, float quadratic)
+{
+	constant_factor = constant;
+	linear_factor = linear;
+	quadratic_factor = quadratic;
+}
+
 void Light::use()
 {
 	if (light_id < 0)
@@ -32,6 +39,15 @@ void Light::use()
 
 	GLint col_loc = getUniformLocation(getLightArrayLocName(), Settings::ShaderLightColorLocationName);
 	glUniform3fv(col_loc, 1, is_on ? glm::value_ptr(color) : glm::value_ptr(glm::vec3()));
+
+	GLint const_loc = getUniformLocation(getLightArrayLocName(), Settings::ShaderLightConstLocationName);
+	glUniform1f(const_loc, constant_factor);
+
+	GLint line_loc = getUniformLocation(getLightArrayLocName(), Settings::ShaderLightLinearLocationName);
+	glUniform1f(line_loc, linear_factor);
+
+	GLint quad_loc = getUniformLocation(getLightArrayLocName(), Settings::ShaderLightQuadraticLocationName);
+	glUniform1f(quad_loc, quadratic_factor);
 }
 
 GLint Light::getUniformLocation(const char * struct_name, const char * field_name)

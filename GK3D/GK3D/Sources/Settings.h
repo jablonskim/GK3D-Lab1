@@ -43,10 +43,11 @@ public:
 
 	
 	static const int TerrainSize = 50;
+	static constexpr float TerrainScaleFactor = 10.f;
 
 	static constexpr float AmbientStrength = 0.2f;
-	static constexpr float SpecularStrength = 0.5f;
-	static const int SpecularShininess = 32;
+	static constexpr float SpecularStrength = 0.8f;
+	static const int SpecularShininess = 128;
 
 	static const int PointLightsCount = 2;
 	static const int SpotLightsCount = 1;
@@ -57,6 +58,14 @@ public:
 	static constexpr float SpotLightR = 1.0f;
 	static constexpr float SpotLightG = 1.0f;
 	static constexpr float SpotLightB = 1.0f;
+
+	static constexpr float SpotLightConstantFactor = 1.0f;
+	static constexpr float SpotLightLinearFactor = 0.2f;
+	static constexpr float SpotLightQuadraticFactor = 0.08f;
+
+	static constexpr float PointLightConstantFactor = 1.0f;
+	static constexpr float PointLightLinearFactor = 1.0f;
+	static constexpr float PointLightQuadraticFactor = 1.0f;
 
 
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Debug\\VertexShader.glsl";
@@ -76,6 +85,9 @@ public:
 	
 	static constexpr char* ShaderLightPositionLocationName = "position";
 	static constexpr char* ShaderLightColorLocationName = "color";
+	static constexpr char* ShaderLightConstLocationName = "constant_factor";
+	static constexpr char* ShaderLightLinearLocationName = "linear_factor";
+	static constexpr char* ShaderLightQuadraticLocationName = "quadratic_factor";
 
 	static constexpr char* ShaderSpotLightsArrayLocationName = "spot_lights";
 	static constexpr char* ShaderSpotLightDirectionLocationName = "direction";
@@ -83,9 +95,6 @@ public:
 	static constexpr char* ShaderSpotLightOuterAngleLocationName = "outer_cut_angle";
 
 	static constexpr char* ShaderPointLightsArrayLocationName = "point_lights";
-	static constexpr char* ShaderPointLightConstLocationName = "constant_factor";
-	static constexpr char* ShaderPointLightLinearLocationName = "linear_factor";
-	static constexpr char* ShaderPointLightQuadraticLocationName = "quadratic_factor";
 
 private:
 	Settings() = delete;

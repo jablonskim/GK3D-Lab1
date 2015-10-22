@@ -12,6 +12,7 @@ public:
 
 	void setPosition(glm::vec3 pos);
 	void setColor(glm::vec3 col);
+	void setFactors(float constant, float linear, float quadratic);
 
 	virtual void use();
 
@@ -29,5 +30,9 @@ private:
 
 	glm::vec3 position;
 	glm::vec3 color;
+
+	float constant_factor;
+	float linear_factor;
+	float quadratic_factor;
 };
 
