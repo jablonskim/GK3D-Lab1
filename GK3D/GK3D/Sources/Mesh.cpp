@@ -31,6 +31,47 @@ void Mesh::setupArrays()
 	glBindVertexArray(0);
 }
 
+void Mesh::processNode(aiNode * node, const aiScene * scene, std::vector<std::shared_ptr<Mesh>> &meshes)
+{
+	for (GLuint i = 0; i < node->mNumMeshes; ++i)
+	{
+		aiMesh* m = scene->mMeshes[node->mMeshes[i]];
+		auto mesh = processLoadedMesh(m);
+		meshes.push_back(mesh);
+	}
+
+	for (GLuint i = 0; i < node->mNumChildren; ++i)
+	{
+		processNode(node->mChildren[i], scene, meshes);
+	}
+}
+
+std::shared_ptr<Mesh> Mesh::processLoadedMesh(aiMesh * loaded_mesh)
+{
+	auto mesh = std::shared_ptr<Mesh>(new Mesh());
+
+	for (GLuint i = 0; i < loaded_mesh->mNumVertices; ++i)
+	{
+		Vertex v = {
+			glm::vec3(loaded_mesh->mVertices[i].x, loaded_mesh->mVertices[i].y, loaded_mesh->mVertices[i].z),
+			glm::vec3(loaded_mesh->mNormals[i].x, loaded_mesh->mNormals[i].y, loaded_mesh->mNormals[i].z)
+		};
+
+		mesh->vertices.push_back(v);
+	}
+
+	for (GLuint i = 0; i < loaded_mesh->mNumFaces; ++i)
+	{
+		aiFace face = loaded_mesh->mFaces[i];
+		for (GLuint j = 0; j < face.mNumIndices; ++j)
+		{
+			mesh->indices.push_back(face.mIndices[j]);
+		}
+	}
+
+	return mesh;
+}
+
 Mesh::~Mesh()
 {
 	glDeleteVertexArrays(1, &vao);
@@ -101,10 +142,22 @@ std::vector<std::shared_ptr<Mesh>> Mesh::createTerrain()
 	return { m };
 }
 
-std::vector<std::shared_ptr<Mesh>> Mesh::fromFile()
+std::vector<std::shared_ptr<Mesh>> Mesh::fromFile(std::string filename)
 {
-	// TODO
-	return std::vector<std::shared_ptr<Mesh>>();
+	Assimp::Importer importer;
+	const aiScene* scene = importer.ReadFile(filename, aiProcess_Triangulate);
+
+	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+	{
+		std::cerr << "Error while loading model: " << importer.GetErrorString() << std::endl;
+		return std::vector<std::shared_ptr<Mesh>>();
+	}
+
+	std::vector<std::shared_ptr<Mesh>> meshes;
+
+	processNode(scene->mRootNode, scene, meshes);
+
+	return meshes;
 }
 
 void Mesh::draw()
