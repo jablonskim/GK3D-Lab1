@@ -1,11 +1,13 @@
 #include "Model.h"
 
-Model::Model(std::shared_ptr<ShaderProgram> prog, std::shared_ptr<Mesh> mesh) :
+Model::Model(std::shared_ptr<ShaderProgram> prog, std::vector<std::shared_ptr<Mesh>> meshes) :
 	program(prog),
-	model_mesh(mesh)
+	model_meshes(meshes)
 {
 	color = glm::vec4(0.f, 0.f, 0.f, 0.f);
 	setMatrix(glm::mat4());
+
+	std::cout << "Creating model..." << std::endl;
 }
 
 void Model::useColor()
@@ -22,14 +24,14 @@ void Model::useMatrix()
 	glUniformMatrix3fv(normal_mat, 1, GL_FALSE, glm::value_ptr(normal_matrix));
 }
 
-std::shared_ptr<Model> Model::fromMesh(std::shared_ptr<Mesh> mesh, std::shared_ptr<ShaderProgram> prog)
+std::shared_ptr<Model> Model::fromMeshes(std::vector<std::shared_ptr<Mesh>> meshes, std::shared_ptr<ShaderProgram> prog)
 {
-	return std::shared_ptr<Model>(new Model(prog, mesh));
+	return std::shared_ptr<Model>(new Model(prog, meshes));
 }
 
 std::shared_ptr<Model> Model::createTerrain(std::shared_ptr<ShaderProgram> prog)
 {
-	auto m = Model::fromMesh(Mesh::createTerrain(), prog);
+	auto m = Model::fromMeshes(Mesh::createTerrain(), prog);
 
 	m->setColor(glm::vec4(0.f, .5f, 0.f, 1.f));
 	auto rotated = glm::rotate(m->model_matrix, glm::radians(90.f), glm::vec3(-1.f, 0.f, 0.f));
@@ -41,6 +43,7 @@ std::shared_ptr<Model> Model::createTerrain(std::shared_ptr<ShaderProgram> prog)
 
 Model::~Model()
 {
+	std::cout << "Destroying model..." << std::endl;
 }
 
 void Model::draw()
@@ -48,7 +51,8 @@ void Model::draw()
 	useColor();
 	useMatrix();
 
-	model_mesh->draw();
+	for(auto & m : model_meshes)
+		m->draw();
 }
 
 void Model::setColor(glm::vec4 col)

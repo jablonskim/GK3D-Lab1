@@ -7,7 +7,7 @@
 class Model
 {
 public:
-	static std::shared_ptr<Model> fromMesh(std::shared_ptr<Mesh> mesh, std::shared_ptr<ShaderProgram> prog);
+	static std::shared_ptr<Model> fromMeshes(std::vector<std::shared_ptr<Mesh>> mesh, std::shared_ptr<ShaderProgram> prog);
 	static std::shared_ptr<Model> createTerrain(std::shared_ptr<ShaderProgram> prog);
 
 	~Model();
@@ -16,13 +16,13 @@ public:
 	void setMatrix(glm::mat4 matrix);
 
 private:
-	Model(std::shared_ptr<ShaderProgram> prog, std::shared_ptr<Mesh> mesh);
+	Model(std::shared_ptr<ShaderProgram> prog, std::vector<std::shared_ptr<Mesh>> meshes);
 
 	void useColor();
 	void useMatrix();
 
 	std::shared_ptr<ShaderProgram> program;
-	std::shared_ptr<Mesh> model_mesh;
+	std::vector<std::shared_ptr<Mesh>> model_meshes;
 	
 	glm::mat4 model_matrix;
 	glm::mat3 normal_matrix;

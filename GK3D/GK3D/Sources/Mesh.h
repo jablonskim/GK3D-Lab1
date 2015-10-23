@@ -8,8 +8,8 @@ class Mesh
 {
 public:
 	~Mesh();
-	static std::shared_ptr<Mesh> createTerrain();
-	static std::shared_ptr<Mesh> fromFile();
+	static std::vector<std::shared_ptr<Mesh>> createTerrain();
+	static std::vector<std::shared_ptr<Mesh>> fromFile();
 	void draw();
 
 private:

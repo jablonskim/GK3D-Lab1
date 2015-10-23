@@ -5,6 +5,7 @@ Mesh::Mesh() :
 	vbo(0),
 	ebo(0)
 {
+	std::cout << "Creating new mesh..." << std::endl;
 }
 
 void Mesh::setupArrays()
@@ -35,9 +36,11 @@ Mesh::~Mesh()
 	glDeleteVertexArrays(1, &vao);
 	glDeleteVertexArrays(1, &vbo);
 	glDeleteVertexArrays(1, &ebo);
+
+	std::cout << "Destroying mesh..." << std::endl;
 }
 
-std::shared_ptr<Mesh> Mesh::createTerrain()
+std::vector<std::shared_ptr<Mesh>> Mesh::createTerrain()
 {
 	auto m = std::shared_ptr<Mesh>(new Mesh());
 
@@ -95,13 +98,13 @@ std::shared_ptr<Mesh> Mesh::createTerrain()
 
 	m->setupArrays();
 
-	return m;
+	return { m };
 }
 
-std::shared_ptr<Mesh> Mesh::fromFile()
+std::vector<std::shared_ptr<Mesh>> Mesh::fromFile()
 {
 	// TODO
-	return std::shared_ptr<Mesh>();
+	return std::vector<std::shared_ptr<Mesh>>();
 }
 
 void Mesh::draw()
