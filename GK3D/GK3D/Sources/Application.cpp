@@ -131,7 +131,7 @@ void Application::createModels()
 {
 	terrain = Model::createTerrain(program);
 
-	//auto lamp = Mesh::fromFile(Settings::LampModelPath);
+	auto lamp = Mesh::fromFile(Settings::LampModelPath);
 	// TODO
 }
 

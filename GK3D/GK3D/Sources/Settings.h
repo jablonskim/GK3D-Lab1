@@ -8,7 +8,7 @@ public:
 	static const int OpenGlMinVersionMajor = 3;
 	static const int OpenGlMinVersionMinor = 3;
 
-	static const bool Fullscreen = false;
+	static const bool Fullscreen = true;
 	static const bool WindowResizable = false;
 	static constexpr char* WindowTitle = "Test";
 
@@ -76,7 +76,7 @@ public:
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Release\\VertexShader.glsl";
 	static constexpr char* FragmentShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Release\\FragmentShader.glsl";
 
-	static constexpr char* LampModelPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Release\\models\\lamp\\lamp-post-ready.max";
+	static constexpr char* LampModelPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Release\\models\\lamp\\lamp-post-ready.3DS";
 
 	static constexpr char* ShaderProjectionMatrixLocationName = "projection_matrix";
 	static constexpr char* ShaderViewMatrixLocationName = "view_matrix";
