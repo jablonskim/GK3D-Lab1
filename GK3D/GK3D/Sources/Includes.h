@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 
 #define GLEW_STATIC
 #include <GL/glew.h>

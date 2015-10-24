@@ -160,6 +160,7 @@ std::vector<std::shared_ptr<Mesh>> Mesh::fromFile(std::string filename)
 	std::vector<std::shared_ptr<Mesh>> meshes;
 
 	processNode(scene->mRootNode, scene, meshes);
+	std::for_each(std::begin(meshes), std::end(meshes), [](auto mesh) { mesh->setupArrays(); });
 
 	return meshes;
 }

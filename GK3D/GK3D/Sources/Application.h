@@ -34,4 +34,5 @@ private:
 	std::shared_ptr<Camera> camera;
 
 	std::shared_ptr<Model> terrain;
+	std::vector<std::shared_ptr<Model>> models;
 };

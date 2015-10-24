@@ -131,7 +131,24 @@ void Application::createModels()
 {
 	terrain = Model::createTerrain(program);
 
-	auto lamp = Mesh::fromFile(Settings::LampModelPath);
+	/*auto lamp_mesh = Mesh::fromFile(Settings::LampModelPath);
+	auto lamp1 = Model::fromMeshes(lamp_mesh, program);
+	lamp1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+	models.push_back(lamp1);*/
+
+	/*auto tree_mesh = Mesh::fromFile(Settings::TreeModelPath);
+	auto tree1 = Model::fromMeshes(tree_mesh, program);
+	tree1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+	models.push_back(tree1);*/
+
+	/*auto bench_mesh = Mesh::fromFile(Settings::BenchModelPath);
+	auto bench1 = Model::fromMeshes(bench_mesh, program);
+	bench1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+
+	models.push_back(bench1);*/
+
 	// TODO
 }
 
@@ -144,6 +161,5 @@ void Application::renderFrame()
 	camera->use();
 
 	terrain->draw();
-
-	// TODO
+	std::for_each(std::cbegin(models), std::cend(models), [](auto model) { model->draw(); });
 }
