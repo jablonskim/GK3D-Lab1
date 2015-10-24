@@ -2,7 +2,8 @@
 
 Light::Light(std::shared_ptr<ShaderProgram> prog, glm::vec3 col, glm::vec3 pos) :
 	program(prog),
-	is_on(true)
+	is_on(true),
+	light_id(-1)
 {
 	setPosition(pos);
 	setColor(col);
