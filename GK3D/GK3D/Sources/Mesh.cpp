@@ -33,6 +33,8 @@ void Mesh::setupArrays()
 
 void Mesh::processNode(aiNode * node, const aiScene * scene, std::vector<std::shared_ptr<Mesh>> &meshes)
 {
+	std::cout << "Processing scene node..." << std::endl;
+
 	for (GLuint i = 0; i < node->mNumMeshes; ++i)
 	{
 		aiMesh* m = scene->mMeshes[node->mMeshes[i]];
@@ -48,6 +50,8 @@ void Mesh::processNode(aiNode * node, const aiScene * scene, std::vector<std::sh
 
 std::shared_ptr<Mesh> Mesh::processLoadedMesh(aiMesh * loaded_mesh)
 {
+	std::cout << "Processing mesh..." << std::endl;
+
 	auto mesh = std::shared_ptr<Mesh>(new Mesh());
 
 	for (GLuint i = 0; i < loaded_mesh->mNumVertices; ++i)

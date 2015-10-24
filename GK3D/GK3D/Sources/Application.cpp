@@ -94,6 +94,8 @@ bool Application::initGLEW()
 		return false;
 	}
 
+	glGetError();
+
 	return true;
 }
 
@@ -128,6 +130,8 @@ bool Application::createWindow()
 void Application::createModels()
 {
 	terrain = Model::createTerrain(program);
+
+	//auto lamp = Mesh::fromFile(Settings::LampModelPath);
 	// TODO
 }
 
