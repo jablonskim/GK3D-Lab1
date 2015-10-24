@@ -131,23 +131,37 @@ void Application::createModels()
 {
 	terrain = Model::createTerrain(program);
 
-	/*auto lamp_mesh = Mesh::fromFile(Settings::LampModelPath);
+	auto lamp_mesh = Mesh::fromFile(Settings::LampModelPath);
 	auto lamp1 = Model::fromMeshes(lamp_mesh, program);
-	lamp1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	lamp1->setColor(glm::vec4(0.7f, 0.7f, 0.7f, 1.0f));
+	
+	auto ltr = glm::translate(glm::mat4(), glm::vec3(0.f, -0.02f, -0.4f));
+	auto lsc = glm::scale(ltr, glm::vec3(0.005f));
+	auto lrt = glm::rotate(lsc, glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f));
+	lamp1->setMatrix(lrt);
 
-	models.push_back(lamp1);*/
+	models.push_back(lamp1);
 
-	/*auto tree_mesh = Mesh::fromFile(Settings::TreeModelPath);
+	auto tree_mesh = Mesh::fromFile(Settings::TreeModelPath);
 	auto tree1 = Model::fromMeshes(tree_mesh, program);
-	tree1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	tree1->setColor(glm::vec4(0.133333f, 0.545098f, 0.133333f, 1.0f));
 
-	models.push_back(tree1);*/
+	auto ttr = glm::translate(glm::mat4(), glm::vec3(0.f, -0.02f, -2.f));
+	auto tsc = glm::scale(ttr, glm::vec3(0.5f));
+	auto trt = glm::rotate(tsc, glm::radians(-90.f), glm::vec3(1.f, 0.f, 0.f));
+	tree1->setMatrix(trt);
 
-	/*auto bench_mesh = Mesh::fromFile(Settings::BenchModelPath);
+	models.push_back(tree1);
+
+	auto bench_mesh = Mesh::fromFile(Settings::BenchModelPath);
 	auto bench1 = Model::fromMeshes(bench_mesh, program);
-	bench1->setColor(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	bench1->setColor(glm::vec4(0.545098f, 0.270588f, 0.0745098f, 1.0f));
 
-	models.push_back(bench1);*/
+	auto tr = glm::translate(glm::mat4(), glm::vec3(0.f, -0.02f, 0.f));
+	auto sc = glm::scale(tr, glm::vec3(0.002f));
+	bench1->setMatrix(sc);
+
+	models.push_back(bench1);
 
 	// TODO
 }

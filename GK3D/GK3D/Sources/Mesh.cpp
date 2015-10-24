@@ -104,7 +104,7 @@ std::vector<std::shared_ptr<Mesh>> Mesh::createTerrain()
 
 			Vertex v;
 			float r = static_cast<float>(rand());
-			v.position = glm::vec3(x, y, (r / RAND_MAX) * 0.02f - 0.02f);
+			v.position = glm::vec3(x, y, (r / RAND_MAX) * 0.005f - 0.005f);
 			v.normal = glm::vec3(0.f, 0.f, 0.f);
 
 			m->vertices.push_back(v);
