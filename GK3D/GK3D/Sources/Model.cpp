@@ -33,7 +33,8 @@ std::shared_ptr<Model> Model::createTerrain(std::shared_ptr<ShaderProgram> prog)
 {
 	auto m = Model::fromMeshes(Mesh::createTerrain(), prog);
 
-	m->setColor(glm::vec4(0.f, 0.392157f, 0.f, 1.f));
+	//m->setColor(glm::vec4(0.f, 0.392157f, 0.f, 1.f));
+	m->setColor(glm::vec4(1.f, 1.f, 1.f, 1.f));
 	auto rotated = glm::rotate(m->model_matrix, glm::radians(90.f), glm::vec3(-1.f, 0.f, 0.f));
 	auto scaled = glm::scale(rotated, glm::vec3(Settings::TerrainScaleFactor));
 	m->setMatrix(scaled);
