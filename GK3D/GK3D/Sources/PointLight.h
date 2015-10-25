@@ -2,6 +2,14 @@
 
 #include "Light.h"
 
+enum class BrokenState
+{
+	Uninitialized,
+	Shining,
+	Broken,
+	Ok
+};
+
 class PointLight :
 	public Light
 {
@@ -18,7 +26,12 @@ protected:
 
 private:
 	void simulateBroken();
+	void changeBrokenColor();
 
 	bool is_broken;
+	GLdouble prev_broken_change_time;
+	BrokenState broken_state;
+	int broken_count;
+	glm::vec3 next_color;
 };
 

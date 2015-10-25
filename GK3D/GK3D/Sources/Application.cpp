@@ -169,11 +169,11 @@ void Application::createModels()
 
 	light = std::make_shared<PointLight>(program);
 	light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
-	light->setPosition(glm::vec3(3.f, 0.7f, -2.2f));
+	light->setPosition(glm::vec3(0.f, 0.7f, -0.4f));
 
 	broken_light = std::make_shared<PointLight>(program);
-	broken_light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
-	broken_light->setPosition(glm::vec3(0.f, 0.7f, -0.4f));
+	broken_light->setBroken();
+	broken_light->setPosition(glm::vec3(3.f, 0.7f, -2.2f));
 
 	
 	auto bench1 = Model::fromMeshes(bench_mesh, program);
