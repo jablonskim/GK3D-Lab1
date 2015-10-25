@@ -73,8 +73,8 @@ public:
 	static constexpr float SpotLightQuadraticFactor = 0.08f;
 
 	static constexpr float PointLightConstantFactor = 1.0f;
-	static constexpr float PointLightLinearFactor = 1.0f;
-	static constexpr float PointLightQuadraticFactor = 1.0f;
+	static constexpr float PointLightLinearFactor = 0.35f;
+	static constexpr float PointLightQuadraticFactor = 0.44f;
 
 
 	static constexpr char* VertexShaderPath = "C:\\Users\\jablonskim\\Documents\\GitHub\\GK3D-Lab1\\GK3D\\Release\\VertexShader.glsl";

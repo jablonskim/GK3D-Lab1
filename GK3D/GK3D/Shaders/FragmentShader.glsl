@@ -80,6 +80,18 @@ vec3 calculate_spotlight(SpotLight light, vec3 model_normal, vec3 view_direction
 	return light.color * ((specular + diffuse) * intensity * attenuation);
 }
 
+vec3 calculate_pointlight(PointLight light, vec3 model_normal, vec3 view_direction)
+{
+	vec3 light_direction = normalize(light.position - fragment_position);
+
+	float diffuse = calculate_diffuse(model_normal, light_direction);
+	float specular = calculate_specular(model_normal, light_direction, view_direction);
+
+	float attenuation = calculate_attenuation(light.position, light.constant_factor, light.linear_factor, light.quadratic_factor);
+
+	return light.color * (specular + diffuse) * attenuation;
+}
+
 void main()
 {
 	vec3 normalized_normal = normalize(normal);
@@ -88,9 +100,13 @@ void main()
 	// Ambient
 	vec3 light_result = ambient_color * ambient_strength;
 
-	// Spotlights
+	// Spot Lights
 	for(int i = 0; i < SPOT_LIGHTS; ++i)
 		light_result += calculate_spotlight(spot_lights[i], normalized_normal, view_direction);
+
+	// Point Lights
+	for(int i = 0; i < POINT_LIGHTS; ++i)
+		light_result += calculate_pointlight(point_lights[i], normalized_normal, view_direction);
 
 	// Output
 	color = model_color * vec4(light_result, 1.0f);

@@ -161,15 +161,19 @@ void Application::createModels()
 	lamp1->setMatrixFromDefaults(glm::mat4(), lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos);
 	models.push_back(lamp1);
 
-	light = std::make_shared<PointLight>(program);
-	light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
-	light->setPosition(glm::vec3(0.f, 1.f, -0.4f));
-
 	auto lamp2 = Model::fromMeshes(lamp_mesh, program);
 	lamp2->setColor(lamp_color);
 	auto lamp2_trans = glm::translate(glm::mat4(), glm::vec3(3.0f, 0.f, -1.8f));
 	lamp2->setMatrixFromDefaults(lamp2_trans, lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos);
 	models.push_back(lamp2);
+
+	light = std::make_shared<PointLight>(program);
+	light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
+	light->setPosition(glm::vec3(3.f, 0.7f, -2.2f));
+
+	broken_light = std::make_shared<PointLight>(program);
+	broken_light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
+	broken_light->setPosition(glm::vec3(0.f, 0.7f, -0.4f));
 
 	
 	auto bench1 = Model::fromMeshes(bench_mesh, program);
@@ -219,4 +223,5 @@ void Application::renderFrame()
 	std::for_each(std::cbegin(models), std::cend(models), [](auto model) { model->draw(); });
 
 	light->use();
+	broken_light->use();
 }
