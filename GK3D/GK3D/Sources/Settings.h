@@ -64,6 +64,10 @@ public:
 	static constexpr float SpotLightG = 1.0f;
 	static constexpr float SpotLightB = 1.0f;
 
+	static constexpr float PointLightR = 1.0f;
+	static constexpr float PointLightG = 1.0f;
+	static constexpr float PointLightB = 1.0f;
+
 	static constexpr float SpotLightConstantFactor = 1.0f;
 	static constexpr float SpotLightLinearFactor = 0.2f;
 	static constexpr float SpotLightQuadraticFactor = 0.08f;

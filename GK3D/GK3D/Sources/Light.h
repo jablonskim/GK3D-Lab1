@@ -17,14 +17,13 @@ public:
 	virtual void use();
 
 protected:
+	virtual int getId() = 0;
 	GLint getUniformLocation(const char* struct_name, const char* field_name);
 	virtual const char* getLightArrayLocName() = 0;
 
 	bool is_on;
 
 private:
-	virtual int getId() = 0;
-
 	std::shared_ptr<ShaderProgram> program;
 	int light_id;
 

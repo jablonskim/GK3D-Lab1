@@ -15,9 +15,9 @@ public:
 	void changeOnOff();
 
 	virtual void use();
-	virtual int getId();
 
 protected:
+	virtual int getId();
 	virtual const char* getLightArrayLocName();
 
 private:
