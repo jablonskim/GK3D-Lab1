@@ -65,3 +65,12 @@ void Model::setMatrix(glm::mat4 matrix)
 	model_matrix = matrix;
 	normal_matrix = glm::mat3(glm::transpose(glm::inverse(matrix)));
 }
+
+void Model::setMatrixFromDefaults(glm::mat4 base, glm::vec3 translation, GLfloat scale, GLfloat angle, glm::vec3 axis)
+{
+	auto translated = glm::translate(base, translation);
+	auto scaled = glm::scale(translated, glm::vec3(scale));
+	auto rotated = glm::rotate(scaled, glm::radians(angle), axis);
+
+	setMatrix(rotated);
+}

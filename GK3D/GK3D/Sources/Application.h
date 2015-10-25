@@ -9,6 +9,7 @@
 #include "Camera.h"
 #include "Model.h"
 #include "ShaderProgram.h"
+#include "PointLight.h"
 
 class Application
 {
@@ -24,7 +25,6 @@ private:
 	bool createWindow();
 	void createModels();
 	void renderFrame();
-	glm::mat4 createDefaultMatrix(glm::mat4 base, glm::vec3 translation, GLfloat scale, GLfloat angle, glm::vec3 axis);
 
 	bool is_initialized;
 	int current_width;
@@ -36,4 +36,6 @@ private:
 
 	std::shared_ptr<Model> terrain;
 	std::vector<std::shared_ptr<Model>> models;
+	std::shared_ptr<PointLight> light;
+	std::shared_ptr<PointLight> broken_light;
 };

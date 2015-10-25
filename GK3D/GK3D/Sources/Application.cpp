@@ -158,33 +158,37 @@ void Application::createModels()
 
 	auto lamp1 = Model::fromMeshes(lamp_mesh, program);
 	lamp1->setColor(lamp_color);
-	lamp1->setMatrix(createDefaultMatrix(glm::mat4(), lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos));
+	lamp1->setMatrixFromDefaults(glm::mat4(), lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos);
 	models.push_back(lamp1);
+
+	light = std::make_shared<PointLight>(program);
+	light->setColor(glm::vec3(Settings::PointLightR, Settings::PointLightG, Settings::PointLightB));
+	light->setPosition(glm::vec3(0.f, 1.f, -0.4f));
 
 	auto lamp2 = Model::fromMeshes(lamp_mesh, program);
 	lamp2->setColor(lamp_color);
 	auto lamp2_trans = glm::translate(glm::mat4(), glm::vec3(3.0f, 0.f, -1.8f));
-	lamp2->setMatrix(createDefaultMatrix(lamp2_trans, lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos));
+	lamp2->setMatrixFromDefaults(lamp2_trans, lamp_translation, lamp_scale, lamp_rotate_angle, lamp_rotate_pos);
 	models.push_back(lamp2);
 
 	
 	auto bench1 = Model::fromMeshes(bench_mesh, program);
 	bench1->setColor(bench_color);
-	bench1->setMatrix(createDefaultMatrix(glm::mat4(), bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos));
+	bench1->setMatrixFromDefaults(glm::mat4(), bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos);
 	models.push_back(bench1);
 
 	auto bench2 = Model::fromMeshes(bench_mesh, program);
 	bench2->setColor(bench_color);
 	auto bench2_trans = glm::translate(glm::mat4(), glm::vec3(1.5f, 0.f, -2.5f));
 	auto bench2_rot = glm::rotate(bench2_trans, glm::radians(-90.f), glm::vec3(0.f, 1.f, 0.f));
-	bench2->setMatrix(createDefaultMatrix(bench2_rot, bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos));
+	bench2->setMatrixFromDefaults(bench2_rot, bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos);
 	models.push_back(bench2);
 
 	auto bench3 = Model::fromMeshes(bench_mesh, program);
 	bench3->setColor(bench_color);
 	auto bench3_trans = glm::translate(glm::mat4(), glm::vec3(2.8f, 0.f, 0.2f));
 	auto bench3_rot = glm::rotate(bench3_trans, glm::radians(135.f), glm::vec3(0.f, 1.f, 0.f));
-	bench3->setMatrix(createDefaultMatrix(bench3_rot, bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos));
+	bench3->setMatrixFromDefaults(bench3_rot, bench_translation, bench_scale, bench_rotate_angle, bench_rotate_pos);
 	models.push_back(bench3);
 
 
@@ -197,7 +201,7 @@ void Application::createModels()
 		GLfloat z_pos = (static_cast<GLfloat>(rand()) / RAND_MAX * 14) - 7;
 		GLfloat x_pos = (static_cast<GLfloat>(rand()) / RAND_MAX * 14) - 7;
 		glm::mat4 translation = glm::translate(glm::mat4(), glm::vec3(x_pos, 0.f, z_pos));
-		tree->setMatrix(createDefaultMatrix(translation, tree_translation, tree_scale, tree_rotate_angle, tree_rotate_pos));
+		tree->setMatrixFromDefaults(translation, tree_translation, tree_scale, tree_rotate_angle, tree_rotate_pos);
 		models.push_back(tree);
 	}
 	
@@ -213,13 +217,6 @@ void Application::renderFrame()
 
 	terrain->draw();
 	std::for_each(std::cbegin(models), std::cend(models), [](auto model) { model->draw(); });
-}
 
-glm::mat4 Application::createDefaultMatrix(glm::mat4 base, glm::vec3 translation, GLfloat scale, GLfloat angle, glm::vec3 axis)
-{
-	auto translated = glm::translate(base, translation);
-	auto scaled = glm::scale(translated, glm::vec3(scale));
-	auto rotated = glm::rotate(scaled, glm::radians(angle), axis);
-
-	return rotated;
+	light->use();
 }

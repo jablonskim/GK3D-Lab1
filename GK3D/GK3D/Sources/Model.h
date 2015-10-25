@@ -14,6 +14,7 @@ public:
 	void draw();
 	void setColor(glm::vec4 col);
 	void setMatrix(glm::mat4 matrix);
+	void setMatrixFromDefaults(glm::mat4 base, glm::vec3 translation, GLfloat scale, GLfloat angle, glm::vec3 axis);
 
 private:
 	Model(std::shared_ptr<ShaderProgram> prog, std::vector<std::shared_ptr<Mesh>> meshes);
