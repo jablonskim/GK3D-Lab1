@@ -8,7 +8,7 @@ public:
 	static const int OpenGlMinVersionMajor = 3;
 	static const int OpenGlMinVersionMinor = 3;
 
-	static const bool Fullscreen = false;
+	static const bool Fullscreen = true;
 	static const bool WindowResizable = false;
 	static constexpr char* WindowTitle = "Test";
 

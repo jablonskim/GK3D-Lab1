@@ -24,6 +24,7 @@ private:
 	bool createWindow();
 	void createModels();
 	void renderFrame();
+	glm::mat4 createDefaultMatrix(glm::mat4 base, glm::vec3 translation, GLfloat scale, GLfloat angle, glm::vec3 axis);
 
 	bool is_initialized;
 	int current_width;
